@@ -21,7 +21,7 @@ public class TipCalculator {
     double perPersonCostBeforeTip = (Math.round((cost / people) * 100) / 100);
     double tipPerPerson = tip / people;
     double totalCostPerPerson = perPersonCostBeforeTip + tipPerPerson;
-
+    System.out.println("hello ");
     
     scan.close();
     
