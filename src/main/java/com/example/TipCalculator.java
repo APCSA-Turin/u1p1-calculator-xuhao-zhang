@@ -5,37 +5,35 @@ public class TipCalculator {
     //WRITE YOUR PROGRAM IN calculateTip
     public static String calculateTip(int people, int percent, double cost) { //You must use these  variable in your calculations
         //DO NOT DELETE ANY OF THE CODE BELOW      
-    Scanner scan = new Scanner(System.in);
-    System.out.print("Enter cost: ");
-    cost = scan.nextDouble();
-    scan.nextLine();
-    System.out.println("Enter percent for tip in integer form:");
-    percent = scan.nextInt();
-    scan.nextLine();
-    System.out.println("Enter number of people: ");
-    people = scan.nextInt();
-    scan.nextLine();
+        // Scanner scan = new Scanner(System.in);
+        // System.out.print("Enter cost: ");
+        // cost = scan.nextDouble();
+        // scan.nextLine();
+        // System.out.println("Enter percent for tip in integer form:");
+        // percent = scan.nextInt();
+        // scan.nextLine();
+        // System.out.println("Enter number of people: ");
+        // people = scan.nextInt();
+        // scan.nextLine();
 
-    double tip = (Math.round((percent / 100 * cost) * 100)) / 100; //I figured out how to round from https://www.geeksforgeeks.org/java/java-math-round-method/
-    double totalBillWithTip = (Math.round((tip + cost) * 100)) / 100;
-    double perPersonCostBeforeTip = (Math.round((cost / people) * 100) / 100);
-    double tipPerPerson = tip / people;
-    double totalCostPerPerson = perPersonCostBeforeTip + tipPerPerson;
-    System.out.println("hello ");
-    
-    scan.close();
-    
-
+        System.out.println(Math.round(((percent / 100.0) * cost) * 100) / 100.0);
+        double tip = (percent / 100.0) * cost;
+        double totalBillWithTip = cost + tip;
+        double perPersonCostBeforeTip = cost / people;
+        double tipPerPerson = tip / people;
+        double totalCostPerPerson = totalBillWithTip / people; //I figured out how to round from https://www.geeksforgeeks.org/java/java-math-round-method/ and CHATGPT
+        
+        // I used the adjument CHATGPT provided me to fix a bug, CHATGPT - Round each only when building the string
+        
         String result = "-------------------------------\n" +
-                       "Total bill before tip: $" + cost + "\n" +
-                       "Total percentage: " + percent + "%\n" +
-                       "Total tip: $" + tip + "\n" +
-                       "Total Bill with tip: $" + totalBillWithTip + "\n" +
-                       "Per person cost before tip: $" + perPersonCostBeforeTip + "\n" +
-                       "Tip per person: $" + tipPerPerson + "\n" +
-                       "Total cost per person: $" + totalCostPerPerson + "\n" +
-                       "-------------------------------\n";
-
+                    "Total bill before tip: $" + Math.round(cost * 100.0) / 100.0 + "\n" +
+                    "Total percentage: " + percent + "%\n" +
+                    "Total tip: $" + Math.round(tip * 100.0) / 100.0 + "\n" +
+                    "Total Bill with tip: $" + Math.round(totalBillWithTip * 100.0) / 100.0 + "\n" +
+                    "Per person cost before tip: $" + Math.round(perPersonCostBeforeTip * 100.0) / 100.0 + "\n" +
+                    "Tip per person: $" + Math.round(tipPerPerson * 100.0) / 100.0 + "\n" +
+                    "Total cost per person: $" + Math.round(totalCostPerPerson * 100.0) / 100.0 + "\n" +
+                    "-------------------------------\n";
         return result;
     }
 
@@ -68,7 +66,7 @@ public class TipCalculator {
         int people=10; 
         int percent=8;
         double cost=10.5;              
-        //System.out.println(calculateTip(people,percent,cost));
+        System.out.println(calculateTip(people,percent,cost));
         System.out.println(extraCredit(people, percent, cost));
     }
 }
